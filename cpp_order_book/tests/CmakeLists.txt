@@ -1,0 +1,55 @@
+cmake_minimum_required(VERSION 3.10)
+project(OrderBookTests LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# --- Add GoogleTest ---
+# Option 1: Find pre-installed GoogleTest (if available)
+# find_package(GTest REQUIRED)
+# if(NOT GTest_FOUND)
+#   message(FATAL_ERROR "GoogleTest not found. Please install it or use FetchContent.")
+# endif()
+
+# Option 2: FetchContent (Recommended for portability, CMake 3.11+)
+include(FetchContent)
+FetchContent_Declare(
+  googletest
+  GIT_REPOSITORY https://github.com/google/googletest.git
+  GIT_TAG main # Or a specific release tag like release-1.14.0
+)
+FetchContent_MakeAvailable(googletest) # This makes gtest & gtest_main targets available
+
+# --- Include Directories ---
+# Include directory for your order book headers from the parent project
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../src)
+
+# --- Source Files for the Order Book library part ---
+# We need to compile the order book classes to link against them.
+# It's better if your main CMakeLists.txt defined the OB as a LIBRARY target.
+# For now, just list the .cpp files of the classes under test.
+set(ORDER_BOOK_SRC_FILES
+    ../src/level_info.cpp
+    ../src/order.cpp
+    ../src/trade.cpp
+    ../src/order_book.cpp
+    # DO NOT include order_book_server.cpp here as it has main()
+)
+
+# --- Test Executable ---
+add_executable(order_book_tests
+    main_test.cpp
+    test_order_book.cpp
+    ${ORDER_BOOK_SRC_FILES} # Compile OB sources directly into test executable
+)
+
+# --- Link Libraries ---
+target_link_libraries(order_book_tests PRIVATE GTest::gtest GTest::gtest_main)
+# If GTest::gtest_main is not found (older GTest), you might link gtest and gmock,
+# and provide your own main in main_test.cpp:
+# target_link_libraries(order_book_tests PRIVATE gtest gmock pthread)
+
+
+# Enable testing with CTest
+include(GoogleTest)
+gtest_discover_tests(order_book_tests)

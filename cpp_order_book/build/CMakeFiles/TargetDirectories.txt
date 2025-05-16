@@ -1,0 +1,3 @@
+/Users/alshodiev/Desktop/git_repos/FlowManager/cpp_order_book/build/CMakeFiles/order_book_server.dir
+/Users/alshodiev/Desktop/git_repos/FlowManager/cpp_order_book/build/CMakeFiles/edit_cache.dir
+/Users/alshodiev/Desktop/git_repos/FlowManager/cpp_order_book/build/CMakeFiles/rebuild_cache.dir

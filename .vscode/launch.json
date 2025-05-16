@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/alshodiev/Desktop/git_repos/FlowManager/cpp_order_book",
+      "program": "/Users/alshodiev/Desktop/git_repos/FlowManager/cpp_order_book/build/Debug/outDebug"
+    }
+  ]
+}
