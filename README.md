@@ -2,10 +2,10 @@
 
 ## Overview
 
-This project mainly comprises of two parts - `C++` Order Book and Python Position Manager. 
+This project mainly comprises of two parts - `C++` Order Book and `Python` Position Manager - where the `C++` types are exposed in Python and vice-versa.
 The Order Book is a high-performance, multi-threaded library responsible for maintaining the Limit Order Book for one or more symbols as well as 
 match orders and update the market data.
-The Position Manager is a service responsible for tracking current positions, receiving target positions from an event-based strategy, calculating deltas, and managing the lifecycle of orders sent to the C++ Order Book to achieve target positions.
+The Position Manager is a service responsible for tracking current positions, receiving target positions from an event-based strategy, calculating deltas, and managing the lifecycle of orders sent to the `C++` Order Book to achieve target positions.
 
 ## Flow
 
